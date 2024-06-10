@@ -1,11 +1,12 @@
 import { useState } from "react";
-import s from "../src/TodoList.module.css";
-import { nanoid } from " nanoid";
+import s from "../TodoList/TodoList.module.css";
+import { nanoid } from "nanoid";
 import { TodoItem } from "./TodoItem";
+import todosData from "../assets/todos.json";
 
 export const TodoList = () => {
-  const [todos, setTodos] = useState();
-  const [newTodoText, setNewTodoText] = useState();
+  const [todos, setTodos] = useState(todosData);
+  const [newTodoText, setNewTodoText] = useState("");
   const handleDeleteTodo = (id) => {
     setTodos((prev) => prev.filter((item) => item.id != id));
   };
@@ -58,7 +59,6 @@ export const TodoList = () => {
             handleEditTodo={handleEditTodo}
           />
         ))}
-        ;
       </ul>
     </>
   );
